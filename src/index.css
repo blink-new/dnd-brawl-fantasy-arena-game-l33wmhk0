@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 28 45% 40%;
+  --accent: 43 77% 52%;
+  --background: 248 39% 15%;
+  --dark-mode: 248 56% 10%;
+  --foreground: 0 0% 95%;
+  --card: 248 39% 18%;
+  --card-foreground: 0 0% 95%;
+  --popover: 248 39% 18%;
+  --popover-foreground: 0 0% 95%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 248 20% 25%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 248 20% 25%;
+  --muted-foreground: 0 0% 70%;
+  --accent-foreground: 248 39% 15%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 248 20% 25%;
+  --input: 248 20% 25%;
+  --ring: 43 77% 52%;
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: Inter, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.fantasy-title {
+  font-family: Cinzel, serif;
+}
+
+.game-canvas {
+  background: linear-gradient(135deg, hsl(var(--dark-mode)) 0%, hsl(var(--background)) 50%, hsl(var(--card)) 100%);
+}
+
+.hero-card {
+  background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+  border: 2px solid hsl(var(--border));
+  transition: all 0.3s ease;
+}
+
+.hero-card:hover {
+  border-color: hsl(var(--accent));
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgb(212 175 55 / 30%);
+}
+
+.ability-button {
+  background: linear-gradient(145deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  border: 2px solid hsl(var(--accent));
+  transition: all 0.2s ease;
+}
+
+.ability-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgb(212 175 55 / 40%);
+}
+
+.ability-button:disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.health-bar {
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+}
+
+.mana-bar {
+  background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+}
+
+.game-ui {
+  background: rgb(26 26 46 / 90%);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(var(--border));
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgb(251 191 36 / 30%); }
+  50% { box-shadow: 0 0 40px rgb(251 191 36 / 60%); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgb(251 191 36 / 40%);
+    transform: scale(1);
+  }
+
+  50% { 
+    box-shadow: 0 0 40px rgb(251 191 36 / 80%);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes damage-float {
+  0% { 
+    transform: translateY(0) scale(1);
+    opacity: 100%;
+  }
+
+  100% { 
+    transform: translateY(-60px) scale(1.2);
+    opacity: 0%;
+  }
+}
+
+@keyframes spell-cast {
+  0% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 80%;
+  }
+
+  50% { 
+    transform: scale(1.5) rotate(180deg);
+    opacity: 100%;
+  }
+
+  100% { 
+    transform: scale(2) rotate(360deg);
+    opacity: 0%;
+  }
+}
+
+@keyframes hero-entrance {
+  0% { 
+    transform: translateY(50px) scale(0.8);
+    opacity: 0%;
+  }
+
+  100% { 
+    transform: translateY(0) scale(1);
+    opacity: 100%;
+  }
+}
+
+@keyframes float-up {
+  0% { 
+    transform: translateY(0) scale(1);
+    opacity: 100%;
+  }
+
+  100% { 
+    transform: translateY(-50px) scale(1.1);
+    opacity: 0%;
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 100%; }
+  50% { opacity: 80%; }
+}
+
+@keyframes fade {
+  0% { opacity: 100%; }
+  100% { opacity: 0%; }
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 100%; }
+  50% { opacity: 30%; }
+}
+
+/* Utility classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-damage-float {
+  animation: damage-float 1.5s ease-out forwards;
+}
+
+.animate-spell-cast {
+  animation: spell-cast 0.8s ease-out forwards;
+}
+
+.animate-hero-entrance {
+  animation: hero-entrance 0.6s ease-out forwards;
+}
+
+.animate-float-up {
+  animation: float-up 2s ease-out forwards;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 4s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+.animate-fade {
+  animation: fade 2s ease-in-out forwards;
+}
+
+.animate-flash {
+  animation: flash 0.5s ease-in-out infinite;
+}
+
+/* Magical glow effects */
+.magic-glow {
+  position: relative;
+}
+
+.magic-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #fbbf24, #3b82f6, #10b981, #f59e0b);
+  border-radius: inherit;
+  opacity: 0%;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.magic-glow:hover::before {
+  opacity: 70%;
+}
