@@ -3,7 +3,7 @@ import { Hero } from './types/game'
 import { blink } from './blink/client'
 import EnhancedMainMenu from './components/EnhancedMainMenu'
 import EnhancedHeroSelection from './components/EnhancedHeroSelection'
-import { RealTimeBattleArena } from './components/RealTimeBattleArena'
+import PremiumBattleArena from './components/PremiumBattleArena'
 import GameResults from './components/GameResults'
 import LoadingScreen from './components/LoadingScreen'
 
@@ -68,9 +68,9 @@ function App() {
       
       case 'battle':
         return selectedHero ? (
-          <RealTimeBattleArena
+          <PremiumBattleArena
             selectedHero={selectedHero}
-            onBattleEnd={handleBattleEnd}
+            onBattleEnd={(result) => handleBattleEnd(result.victory, result.stats)}
           />
         ) : null
       
